@@ -24,12 +24,31 @@ noagreeok?.addEventListener('click', () =>{
     location.href = '/';
 })
 
+// ------------------------------ checkme
+const name2 = document.querySelector('#name2');
+const jumin1 = document.querySelector('#jumin1')
+const jumin2 = document.querySelector('#jumin2')
+const chkjumin = document.querySelector('#chkjumin');
+const chk2btn = document.querySelector('#check2btn');
+const cancel2btn = document.querySelector('#cancel2btn');
+const chkfrm2 = document.querySelector('#checkfrm2');
 
-
-check2btn?.addEventListener('click', () => {
-    location.href = '/join/joinme';
+chk2btn?.addEventListener('click', () => {
+    if (name2.value === '') alert("이름을 기입하세요");
+    else if(jumin1.value === '') alert("주민번호 앞자리를 입력하세요");
+    else if(jumin2.value === '') alert("주민번호 뒷자리를 입력하세요");
+    else if(!chkjumin.checked) alert("주민번호 처리에 동의하세요");
+    else {
+        chkfrm2.method = "post";
+        chkfrm2.action = '/join/joinme';
+        chkfrm2.submit();
+    }
 })
 
-joinbtn?.addEventListener('click', () => {
-    location.href = '/join/checkok'
+cancel2btn?.addEventListener('click', () => {
+    location.href = '/join/agree';
 })
+
+// ------------------------------------------ joinme
+
+// ------------------------------------------ joinok
