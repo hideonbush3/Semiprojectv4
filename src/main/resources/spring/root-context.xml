@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- view 지원을 제외한 bean을 설정 ex)DB, DAO, Service-->
+
+    <!-- jdbc property : 현재 파일에만 속성값 적용 -->
+    <context:property-placeholder
+            location="classpath:mariadb.properties" />
+
+    <!-- 외부 클래스는 bean태그를 사용해야 쓸 수 있다. 내가만든건 어노테이션으로도 가능 -->
+    <!-- dbcp datasource -->
+    <bean id="dbcpDataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="${DRV}" p:url="${URL}"
+          p:username="${USR}" p:password="${PWD}" />
+
+    <!-- mybatis3 -->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="dbcpDataSource"
+          p:mapperLocations="classpath:mybatis3/*Mapper.xml"/>
+    <bean id="sqlSession"
+          class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory" index="0"  />
+    </bean>
+</beans>
