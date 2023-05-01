@@ -7,6 +7,9 @@
 
     <mvc:annotation-driven />
 
+    <!-- 웹 정적 자원 설정 -->
+    <mvc:resources mapping="/assets/**" location="/resources/" />
+
     <!-- jsp 설정 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
