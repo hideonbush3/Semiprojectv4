@@ -1,3 +1,2 @@
-#main{
-    min-height: 500px;
-}
+#main{min-height: 500px;}
+#logo:hover{cursor: pointer;}

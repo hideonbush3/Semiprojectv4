@@ -19,4 +19,5 @@ public class indexController {
     public String admin(){
         return "admin.tiles";
     }
+
 }
