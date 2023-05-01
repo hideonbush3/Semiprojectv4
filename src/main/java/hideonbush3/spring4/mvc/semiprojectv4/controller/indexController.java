@@ -9,4 +9,14 @@ public class indexController {
     public String index(){
         return "index.tiles";
     }
+
+    @GetMapping("/intro")
+    public String intro(){
+        return "intro.tiles";
+    }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin.tiles";
+    }
 }
