@@ -1,5 +1,6 @@
 package hideonbush3.spring4.mvc.semiprojectv4.controller;
 
+import hideonbush3.spring4.mvc.semiprojectv4.model.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +22,12 @@ public class joinController {
         return "join/checkme.tiles";
     }
 
-    @GetMapping("/joinme")
-    public String joinme(){
-        return "join/joinme.tiles";
+    @PostMapping("/joinme")
+    public ModelAndView joinmeok(Member mb){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("mb", mb);
+        mv.setViewName("join/joinme.tiles");
+        return mv;
     }
 
     @GetMapping("/joinok")

@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="main">
     <div class="mt-5">
         <i class="fa-solid fa-baby fa-2xl">회원가입</i>
@@ -41,20 +42,20 @@
                     <div class="col-3">
                         <input
                                 class="form-control border-danger bg-light"
-                                type="text" name="name" id="name" readonly></div>
+                                type="text" name="name" id="name" readonly value="${mb.name}"></div>
                 </div>
 
                 <div class="col-11 offset-1 row mb-3 align-items-center">
                     <label class="col-2 form-label text-danger text-end"
-                           for="jumin1">주민번호</label>
+                           for="jumin1a">주민번호</label>
                     <div class="col-3">
                         <input
                                 class="form-control border-danger"
-                                type="text" name="jumin1" id="jumin1" readonly></div>
+                                type="text" name="jumin1a" id="jumin1a" readonly value="${mb.jumin1}"></div>
                     <div class="col-3">
                         <input
                                 class="form-control border-danger bg-light"
-                                type="text" name="jumin2" id="jumin2" readonly></div>
+                                type="text" name="jumin2a" id="jumin2a" readonly value="${mb.jumin2}"></div>
                 </div>
 
                 <div class="col-11 offset-1 row mb-3 align-items-center">
@@ -259,7 +260,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"
-                            id="sendzip"><i class="fas fa-check-square"></i>
+                            id="sendzip" data-bs-dismiss="zipmodal"><i class="fas fa-check-square"></i>
                         선택하고 닫기</button>
                 </div>
             </div>
