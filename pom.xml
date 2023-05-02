@@ -148,6 +148,18 @@
             <version>3.0.8</version>
         </dependency>
 
+        <!-- object mapper -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.14.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.14.2</version>
+        </dependency>
+
         <!-- 자바 단위테스트 도구 -->
         <dependency>
             <groupId>junit</groupId>
