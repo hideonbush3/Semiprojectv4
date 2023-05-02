@@ -104,7 +104,7 @@
                                type="text" name="zip2" id="zip2"></div>
                     <div class="col-3">
                         <button type="button" class="btn btn-dark"
-                                data-bs-toggle="modal" data-bs-target="#zipmodal">
+                                id="zpmdbtn">
                             <i class="fas fa-question-circle"></i>우편변호 찾기
                         </button>
                     </div>

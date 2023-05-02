@@ -57,6 +57,9 @@ const zipbtn = document.querySelector('#findzipbtn');   // 우편번호 검색 �
 const addrlist = document.querySelector('#addrlist');   // 검색결과 표시하는 option 태그
 const sendzip = document.querySelector('#sendzip');     // 우편번호 선택하고 닫는 버튼
 const zipmodal = document.querySelector('#zipmodal');
+const zpmdbtn = document.querySelector('#zpmdbtn');
+
+const modal = new bootstrap.Modal(zipmodal, {});
 
 joinbtn?.addEventListener('click', () => {
     if (joinfrm.userid.value === '') alert("아이디를 입력하세요")
@@ -71,6 +74,14 @@ joinbtn?.addEventListener('click', () => {
     else {
         location.href = "/join/joinok";
     }
+})
+
+zpmdbtn?.addEventListener('click', () => {
+    while(addrlist.lastChild){
+        addrlist.removeChild(addrlist.lastChild);
+    }
+    dong.value = '';
+    modal.show();
 })
 
 cancelbtn?.addEventListener('click', () => {
@@ -103,6 +114,10 @@ const showzipaddr = (jsons) => {
 // 2. joinController 에서 json 문자열 형식으로 결과를 보내줌
 // 3. 그것을 인자로 showzipaddr() 호출. showzipaddr()은 우편번호 검색 결과를 보여주는 함수
 zipbtn?.addEventListener('click', () => {
+    if (dong.value === '') {
+        alert("검색어를 입력하세요");
+        return;
+    }
     const url = '/join/zipcode?dong=' + dong.value;
     fetch(url).then(response => response.text())
         .then(text => showzipaddr(text));
@@ -128,7 +143,7 @@ sendzip?.addEventListener('click', () => {
 })
 
 email3.addEventListener('onchange', () => {
-
+    joinfrm.email2.value = email3.value;
 })
 
 // ------------------------------------------ joinok
