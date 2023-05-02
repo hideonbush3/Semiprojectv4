@@ -49,15 +49,14 @@ cancel2btn?.addEventListener('click', () => {
 const joinfrm = document.forms.joinfrm;
 const joinbtn = document.querySelector('#joinbtn');
 const cancelbtn = document.querySelector('#cancelbtn');
+const email3 = document.querySelector('#email3');
 
 // 우편번호 검색 모달
 const dong = document.querySelector('#dong');           // 동 입력칸
 const zipbtn = document.querySelector('#findzipbtn');   // 우편번호 검색 버튼
 const addrlist = document.querySelector('#addrlist');   // 검색결과 표시하는 option 태그
 const sendzip = document.querySelector('#sendzip');     // 우편번호 선택하고 닫는 버튼
-const zip1 = document.querySelector('#zip1');       // 우편번호 앞자리 입력칸
-const zip2 = document.querySelector('#zip2');       // 우편번호 뒷자리 입력칸
-
+const zipmodal = document.querySelector('#zipmodal');
 
 joinbtn?.addEventListener('click', () => {
     if (joinfrm.userid.value === '') alert("아이디를 입력하세요")
@@ -109,8 +108,27 @@ zipbtn?.addEventListener('click', () => {
         .then(text => showzipaddr(text));
 });
 
+sendzip?.addEventListener('click', () => {
+    let addr = addrlist.value;
+    if(addr !== '') {
+        // 123-456 서울 ....
+        let zip = addr.split(' ')[0];   // 글자 시작부터 공백이 처음 나올때까지
+        let sido = addr.split(' ')[1];
+        let gugun = addr.split(' ')[2];
+        let dong = addr.split(' ')[3];
+        joinfrm.zip1.value = zip.split('-')[0];
+        joinfrm.zip2.value = zip.split('-')[1];
+        let addrs =
+            `${addr.split(' ')[1]} ${addr.split(' ')[2]} ${addr.split(' ')[3]}`;
+        joinfrm.addr1.value = addrs;
 
+        bootstrap.Modal.getInstance(zipmodal).hide();
+    }
+    else alert("주소를 선택하세요")
+})
 
+email3.addEventListener('onchange', () => {
 
+})
 
 // ------------------------------------------ joinok

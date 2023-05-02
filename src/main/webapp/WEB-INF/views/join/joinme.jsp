@@ -112,7 +112,7 @@
 
                 <div class="col-11 offset-1 row mb-3 align-items-center">
                     <label class="col-2 form-label text-danger text-end"
-                           for="addr">나머지 주소</label>
+                           for="addr1">나머지 주소</label>
                     <div class="col-4">
                         <input class="form-control border-danger"
                                type="text" name="addr1" id="addr1"></div>
@@ -260,7 +260,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"
-                            id="sendzip" data-bs-dismiss="zipmodal"><i class="fas fa-check-square"></i>
+                            id="sendzip"><i class="fas fa-check-square"></i>
                         선택하고 닫기</button>
                 </div>
             </div>
