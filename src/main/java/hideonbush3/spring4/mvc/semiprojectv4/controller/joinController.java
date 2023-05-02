@@ -56,4 +56,19 @@ public class joinController {
             e.printStackTrace();
         }
     }
+
+    // 아이디 사용가능 여부
+    // /join/checkuid?uid=아이디
+    // 사용가능     :0
+    // 사용불가능    :1
+    @ResponseBody
+    @GetMapping("/checkuid")
+    public void checkuid(String uid, HttpServletResponse res){
+        try {
+            // 아이디 사용여부를 뷰없이 바로 응답으로 출력
+            res.getWriter().print( jnsrv.checkUserid(uid) );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
