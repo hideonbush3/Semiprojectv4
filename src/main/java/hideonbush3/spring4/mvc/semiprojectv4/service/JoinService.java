@@ -7,7 +7,7 @@ public interface JoinService {
 
     boolean newMember(Member m);
 
-    boolean checkUserid(String uid);
+    int checkUserid(String uid);
 
     boolean loginMember(Member m);
 }

@@ -55,8 +55,8 @@ public class JoinServiceImpl implements JoinService{
     }
 
     @Override
-    public boolean checkUserid(String uid) {
-        return false;
+    public int checkUserid(String uid) {
+        return jndao.selectOneUserid(uid);
     }
 
     @Override
