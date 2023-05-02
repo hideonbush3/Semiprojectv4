@@ -6,5 +6,9 @@
     parameterType="String" resultType="hideonbush3.spring4.mvc.semiprojectv4.model.Zipcode">
         select * from zipcode2013 where dong like #{dong}
     </select>
+    <select id="selectOneUid" statementType="PREPARED"
+    parameterType="String" resultType="int">
+        select count(userid) cnt from member where userid = #{uid}
+    </select>
 
 </mapper>
