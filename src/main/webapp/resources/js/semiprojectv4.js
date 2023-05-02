@@ -50,6 +50,9 @@ const joinfrm = document.forms.joinfrm;
 const joinbtn = document.querySelector('#joinbtn');
 const cancelbtn = document.querySelector('#cancelbtn');
 const email3 = document.querySelector('#email3');
+const uidmsg = document.querySelector('#uidmsg');
+const pwdmsg = document.querySelector('#pwdmsg');
+const userid = document.querySelector('#userid');
 
 // 우편번호 검색 모달
 const dong = document.querySelector('#dong');           // 동 입력칸
@@ -66,15 +69,17 @@ joinbtn?.addEventListener('click', () => {
     else if(joinfrm.passwd.value === '') alert("비밀번호를 입력하세요");
     else if(joinfrm.repasswd.value === '') alert("비밀번호를 한번 더 입력하세요");
     else if(joinfrm.passwd.value !== joinfrm.repasswd.value) alert("비밀번호가 일치하지 않습니다");
-    // else if(joinfrm.zip1.value === '' || joinfrm.zip2.value === '') alert("우편번호를 확인하세요");
+    else if(joinfrm.zip1.value === '' || joinfrm.zip2.value === '') alert("우편번호를 확인하세요");
     else if(joinfrm.addr1.value === '' || joinfrm.addr2.value === '') alert("주소를 입력하세요");
-    // else if(joinfrm.email1.value === '' || joinfrm.email2.value === '') alert("이메일을 입력하세요");
+    else if(joinfrm.email1.value === '' || joinfrm.email2.value === '') alert("이메일을 입력하세요");
     else if(joinfrm.tel2.value === '' || joinfrm.tel3.value === '') alert("전화번호를 입력하세요");
-    // else if(joinfrm.grecaptcha.value === '') alert("자동가입방지를 확인하세요");
+    else if(grecaptcha.getResponse() === '') alert("자동가입방지를 확인하세요");
     else {
-        location.href = "/join/joinok";
+        joinfrm.method = 'post';
+        joinfrm.action = '/join/joinok';
+        joinfrm.submit();
     }
-})
+});
 
 zpmdbtn?.addEventListener('click', () => {
     while(addrlist.lastChild){
@@ -142,7 +147,7 @@ sendzip?.addEventListener('click', () => {
     else alert("주소를 선택하세요")
 })
 
-email3.addEventListener('change', () => {
+email3?.addEventListener('change', () => {
     if (email3.value === "직접입력하기") {
         joinfrm.email2.readOnly = false;
         joinfrm.email2.value = '';
@@ -155,4 +160,26 @@ email3.addEventListener('change', () => {
     }
 })
 
+dong?.addEventListener('keydown', (e) => {
+    if(e.keyCode === 13){   // 엔터키를 누르면
+        e.preventDefault(); // 이벤트 전파방지
+    }
+})
+
+
+userid?.addEventListener('blur', () => {
+    if(userid.value === ''){
+        alert("중복 검색할 아이디를 입력하세요")
+        return;
+    }
+    const url = "/join/checkuid?uid=" + userid.value;
+    fetch(url).then(response => response.text())
+        .then(text => alert(text));
+});
+
 // ------------------------------------------ joinok
+const go2index = document.querySelector('#go2index');
+
+go2index?.addEventListener('click', () => {
+    location.href = '/';
+})
