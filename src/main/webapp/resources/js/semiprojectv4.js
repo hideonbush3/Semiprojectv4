@@ -101,8 +101,8 @@ const showzipaddr = (jsons) => {
     //     console.log(data);
     // });
     jsons.forEach(function (data, idx) {
-        // console.log(`${data['zipcode']} ${data['sido']} ${data['gugun']} ${data['dong']}`);
-        addrs += `<option>${data['zipcode']} ${data['sido']} ${data['gugun']} ${data['dong']}</option>`;
+        let bunji = (data['bunji'] !== null) ? data['bunji'] : '';
+        addrs += `<option>${data['zipcode']} ${data['sido']} ${data['gugun']} ${data['dong']} ${bunji}</option>`;
     });
     while(addrlist.lastChild){
         addrlist.removeChild(addrlist.lastChild);
@@ -142,8 +142,17 @@ sendzip?.addEventListener('click', () => {
     else alert("주소를 선택하세요")
 })
 
-email3.addEventListener('onchange', () => {
-    joinfrm.email2.value = email3.value;
+email3.addEventListener('change', () => {
+    if (email3.value === "직접입력하기") {
+        joinfrm.email2.readOnly = false;
+        joinfrm.email2.value = '';
+    } else if (email3.value !== "선택하세요"){
+        joinfrm.email2.readOnly = true;
+        joinfrm.email2.value = email3.value;
+    } else if (email3.value === "선택하세요"){
+        joinfrm.email2.readOnly = true;
+        joinfrm.email2.value = '';
+    }
 })
 
 // ------------------------------------------ joinok
