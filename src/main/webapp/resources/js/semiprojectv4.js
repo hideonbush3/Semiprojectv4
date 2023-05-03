@@ -51,8 +51,10 @@ const joinbtn = document.querySelector('#joinbtn');
 const cancelbtn = document.querySelector('#cancelbtn');
 const email3 = document.querySelector('#email3');
 const uidmsg = document.querySelector('#uidmsg');
-const pwdmsg = document.querySelector('#pwdmsg');
 const userid = document.querySelector('#userid');
+const passwd = document.querySelector('#passwd');
+const repasswd = document.querySelector('#repasswd');
+const pwdmsg = document.querySelector('#pwdmsg');
 
 // 우편번호 검색 모달
 const dong = document.querySelector('#dong');           // 동 입력칸
@@ -179,13 +181,28 @@ const styleCheckUid = (chkuid) => {
 };
 userid?.addEventListener('blur', () => {
     if(userid.value === ''){
-        alert("중복 검색할 아이디를 입력하세요")
+        uidmsg.innerText = '6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.';
+        uidmsg.style.color = 'grey';
         return;
     }
     const url = "/join/checkuid?uid=" + userid.value;
     fetch(url).then(response => response.text())
         .then(text => styleCheckUid(text));
 });
+
+repasswd?.addEventListener('blur', () => {
+    let pmsg = '비밀번호가 일치하지 않습니다';
+    pwdmsg.style.color = 'red';
+    pwdmsg.innerText = pmsg;
+    if(passwd.value === repasswd.value){
+        pmsg = '비밀번호가 일치합니다';
+        pwdmsg.style.color = 'blue';
+        pwdmsg.innerText = pmsg;
+    } else if(passwd.value === '' || repasswd.value === ''){
+        pwdmsg.style.color = 'grey';
+        pwdmsg.innerText = '6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.';
+    }
+})
 
 // ------------------------------------------ joinok
 const go2index = document.querySelector('#go2index');
