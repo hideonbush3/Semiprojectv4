@@ -33,9 +33,15 @@ public class joinController {
         return mv;
     }
 
-    @GetMapping("/joinok")
-    public String joinok(){
-        return "join/joinok.tiles";
+    // 회원가입 처리
+    @PostMapping("/joinok")
+    public String joinok(Member m, String grecaptcha) {
+        String view = "error.tiles";
+
+        if (jnsrv.newMember(m)){
+            view = "join/joinok.tiles";
+        }
+        return view;
     }
 
     // 우편번호 검색

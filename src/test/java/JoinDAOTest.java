@@ -1,3 +1,4 @@
+import hideonbush3.spring4.mvc.semiprojectv4.model.Member;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +31,23 @@ public class JoinDAOTest {
     public void checkUserid(){
         String uid = "ㅁ";
         assertEquals(1, (int)sqlSession.selectOne("join.selectOneUid", uid));
+
+    }
+
+    @Test
+    public void newMember(){
+        Member m = new Member();
+        m.setName("a");
+        m.setJumin1("a");
+        m.setJumin2("a");
+        m.setUserid("a");
+        m.setPasswd("a");
+        m.setZipcode("a");
+        m.setAddr1("a");
+        m.setAddr2("a");
+        m.setEmail("a");
+        m.setPhone("a");
+        assertEquals(1, sqlSession.insert("join.insertMember", m));
 
     }
 }

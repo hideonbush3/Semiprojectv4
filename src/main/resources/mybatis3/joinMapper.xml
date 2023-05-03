@@ -8,7 +8,11 @@
     </select>
     <select id="selectOneUid" statementType="PREPARED"
     parameterType="String" resultType="int">
-        select count(userid) cnt from member where userid = #{uid}
+        select count(userid) cnt from member2 where userid = #{uid}
     </select>
+    <insert id="insertMember" parameterType="hideonbush3.spring4.mvc.semiprojectv4.model.Member"
+    statementType="PREPARED">
+        insert into member2 (name, jumin1, jumin2, userid, passwd, zipcode, addr1, addr2, email, phone) values (#{name}, #{jumin1}, #{jumin2}, #{userid}, #{passwd}, #{zipcode}, #{addr1}, #{addr2}, #{email}, #{phone})
+    </insert>
 
 </mapper>

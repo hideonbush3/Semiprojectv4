@@ -53,11 +53,11 @@
                     <div class="col-3">
                         <input
                                 class="form-control border-danger"
-                                type="text" name="jumin1a" id="jumin1a" readonly value="${mb.jumin1}"></div>
+                                type="text" name="jumin1" id="jumin1a" readonly value="${mb.jumin1}"></div>
                     <div class="col-3">
                         <input
                                 class="form-control border-danger bg-light"
-                                type="text" name="jumin2a" id="jumin2a" readonly value="${mb.jumin2}"></div>
+                                type="text" name="jumin2" id="jumin2a" readonly value="${mb.jumin2}"></div>
                 </div>
 
                 <div class="col-11 offset-1 row mb-3 align-items-center">
@@ -170,7 +170,7 @@
                     <div class="col-3">
                         <div class="g-recaptcha"
                              data-sitekey="6LdL4OskAAAAAK7rwtgYuLMdFMXONFJgc5hhBcaX"></div>
-                        <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+                        <input type="hidden" name="grecaptcha" id="g-recaptcha">
                     </div>
                 </div>
 

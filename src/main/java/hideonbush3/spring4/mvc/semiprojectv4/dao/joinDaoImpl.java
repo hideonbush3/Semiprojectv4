@@ -21,7 +21,7 @@ public class joinDaoImpl implements JoinDao{
 
     @Override
     public int insertMember(Member m) {
-        return 0;
+        return sqlSession.insert("join.insertMember", m);
     }
 
     @Override
