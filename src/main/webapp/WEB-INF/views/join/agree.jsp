@@ -399,3 +399,5 @@ Copyright © Kakao Corp. All rights reserved.
         <button id="noagreeok" type="button" class="btn btn-danger">동의하지 않습니다.</button>
     </div>
 </div>
+
+<script src="/assets/js/join.js"></script>
