@@ -41,6 +41,7 @@ public class JoinServiceImpl implements JoinService{
         dong = "%" + dong + "%";
 
         try {
+            // writeValueAsString(value) - value : String 타입으로 변환할 대상
             json = mapper.writeValueAsString( jndao.selectZipcode(dong));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
