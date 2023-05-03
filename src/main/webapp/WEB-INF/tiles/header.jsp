@@ -4,12 +4,17 @@
 <header class="row">
     <div class="col"><h1 id="logo">Lorem Ipsum</h1></div>
     <div class="col text-end">
-
-        <c:set var="path">"${requestScope['javax.servlet.forward.servlet_path']}"</c:set>
+        <c:set var="path">${requestScope['javax.servlet.forward.servlet_path']}</c:set>
         <c:if test="${! fn:startsWith(path, '/join')}">
-        <button type="button" class="btn btn-danger mt-2"
-                data-bs-target="#loginfrm" data-bs-toggle="modal">로그인</button>
-        <button type="button" class="btn btn-primary mt-2">회원가입</button>
+            <c:if test="${empty sessionScope.UID}">
+            <button type="button" class="btn btn-danger mt-2"
+                    data-bs-target="#loginfrm" data-bs-toggle="modal">로그인</button>
+            <button type="button" class="btn btn-primary mt-2">회원가입</button>
+            </c:if>
+            <c:if test="${!empty sessionScope.UID}">
+                <button type="button" class="btn btn-dark mt-2" id="lgoutbtn">로그아웃</button>
+                <button type="button" class="btn btn-success mt-2">회원정보</button>
+            </c:if>
         </c:if>
     </div>
 </header>
