@@ -2,8 +2,7 @@
 
 <div id="main">
   <div class="mt-5">
-    <i class="fa-light fa-pen-to-square"></i> 게시판 </i>
-    <hr>
+    <i class="fa-solid fa-pen-to-square fa-2xl"> 게시판 </i>    <hr>
   </div>
 
 
