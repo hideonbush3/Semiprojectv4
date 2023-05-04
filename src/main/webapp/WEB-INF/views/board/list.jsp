@@ -16,6 +16,8 @@
   // x를 구하는 식 : (x - 1) * 10, (x - 1) * 10 - 10
 %>
 
+<c:set var="pglink" value="/board/list?cpg=" />
+
 <div id="main">
   <div class="mt-5">
     <i class="fa-solid fa-pen-to-square fa-2xl"> 게시판 </i>
@@ -84,17 +86,17 @@
       <nav>
         <ul class="pagination justify-content-center">
           <li class="page-item disabled"><a class="page-link" href="#">이전</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
-          <li class="page-item"><a class="page-link" href="#">5</a></li>
-          <li class="page-item"><a class="page-link" href="#">6</a></li>
-          <li class="page-item"><a class="page-link" href="#">7</a></li>
-          <li class="page-item"><a class="page-link" href="#">8</a></li>
-          <li class="page-item"><a class="page-link" href="#">9</a></li>
-          <li class="page-item"><a class="page-link" href="#">10</a></li>
-          <li class="page-item"><a class="page-link" href="#">다음</a></li>
+          <li class="page-item"><a class="page-link" href="/board/list?cpg=1">1</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">2</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">3</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">4</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">5</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">6</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">7</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">8</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">9</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">10</a></li>
+          <li class="page-item"><a class="page-link" href="${pglink}">다음</a></li>
         </ul>
       </nav>
     </div>
