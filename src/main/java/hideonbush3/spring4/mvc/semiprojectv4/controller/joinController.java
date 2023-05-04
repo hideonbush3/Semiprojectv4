@@ -35,7 +35,7 @@ public class joinController {
 
     // 회원가입 처리
     @PostMapping("/joinok")
-    public String joinok(Member m, String grecaptcha) {
+    public String joinok(Member m) {
         String view = "error.tiles";
 
         if (jnsrv.newMember(m)){
