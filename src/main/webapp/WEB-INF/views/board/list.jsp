@@ -15,6 +15,19 @@
   // ex) list.do?cp=n : x ~ x - 9
   // x를 구하는 식 : (x - 1) * 10, (x - 1) * 10 - 10
 %>
+<%
+// 게시판 리스트 처리 - 네비게이션
+// 현재 페이지에 따라서 보여줄 페이지 블럭을 결정
+// ex) cpg = 1 : 1 2 3 4 5 6 7 8 9 10 다음
+// ex) cpg = 3 : 1 2 3 4 5 6 7 8 9 10 다음
+// ex) cpg = 9 : 1 2 3 4 5 6 7 8 9 10 다음
+// ex) cpg = 11 : 이전 11 12 13 14 15 16 17 18 19 20 다음
+// ex) cpg = 15 : 이전 11 12 13 14 15 16 17 18 19 20 다음
+// ex) cpg = 23 : 이전 21 22 23 24 25 26 27 28 29 30 다음
+// ex) cpg = 52: 이전 51 52 53 54 55
+// startPage = ((cpg - 1) / 10) * 10 + 1
+// endPage = startPage + 10 - 1
+%>
 
 <c:set var="pglink" value="/board/list?cpg="/>
 
@@ -87,17 +100,26 @@
       <nav>
 
         <ul class="pagination justify-content-center">
+
+          <a class="page-link" href="${pglink}">처음</a>
+
           <c:if test="${cpg-1 gt 0}"><li class="page-item"></li></c:if>
           <c:if test="${cpg-1 le 0}"><li class="page-item disabled"></c:if>
           <a class="page-link" href="${pglink}${cpg - 1}">이전</a></li>
 
-          <c:forEach var="i" begin="1" end="10">
+          <c:forEach var="i" begin="${stpg}" end="${stpg + 10 - 1}">
+            <c:if test="${i le cntpg}"> <!-- 현재페이지번호 (i) 가 전체 페이지개수 (cntpg) 보다 작거나 작을때만 페이지네이션 번호를 출력 -->
             <c:if test="${i ne cpg}"><li class="page-item"></c:if>
             <c:if test="${i eq cpg}"><li class="page-item active"></c:if>
             <a class="page-link" href="${pglink}${i}">${i}</a></li>
+          </c:if>
           </c:forEach>
 
-          <li class="page-item"><a class="page-link" href="${pglink}${cpg + 1}">다음</a></li>
+          <c:if test="${cpg lt cntpg}"><li class="page-item"></c:if>
+          <c:if test="${cpg ge cntpg}"><li class="page-item disabled"></c:if>
+          <a class="page-link" href="${pglink}${cpg + 1}">다음</a></li>
+
+          <a class="page-link" href="${pglink}${cntpg}">끝</a>
         </ul>
 
       </nav>
