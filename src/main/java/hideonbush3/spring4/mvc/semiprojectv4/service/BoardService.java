@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface BoardService {
 
-    List<Board> readBoard();
+    List<Board> readBoard(int cpage);
 
 }
