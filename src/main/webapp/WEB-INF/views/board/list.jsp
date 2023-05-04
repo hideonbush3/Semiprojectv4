@@ -101,9 +101,11 @@
 
         <ul class="pagination justify-content-center">
 
-          <a class="page-link" href="${pglink}">처음</a>
+          <c:if test="${cpg gt 1}"><li class="page-item">
+          <a class="page-link" href="${pglink}${1}">처음</a></li></c:if>
 
           <c:if test="${cpg-1 gt 0}"><li class="page-item"></li></c:if>
+
           <c:if test="${cpg-1 le 0}"><li class="page-item disabled"></c:if>
           <a class="page-link" href="${pglink}${cpg - 1}">이전</a></li>
 
@@ -116,10 +118,13 @@
           </c:forEach>
 
           <c:if test="${cpg lt cntpg}"><li class="page-item"></c:if>
+
           <c:if test="${cpg ge cntpg}"><li class="page-item disabled"></c:if>
+
           <a class="page-link" href="${pglink}${cpg + 1}">다음</a></li>
 
-          <a class="page-link" href="${pglink}${cntpg}">끝</a>
+          <c:if test="${cpg lt cntpg}"><li class="page-item">
+          <a class="page-link" href="${pglink}${cntpg}">끝</a></li></c:if>
         </ul>
 
       </nav>
