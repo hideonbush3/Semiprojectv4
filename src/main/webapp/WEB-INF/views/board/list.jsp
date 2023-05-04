@@ -16,9 +16,10 @@
   // x를 구하는 식 : (x - 1) * 10, (x - 1) * 10 - 10
 %>
 
-<c:set var="pglink" value="/board/list?cpg=" />
+<c:set var="pglink" value="/board/list?cpg="/>
 
 <div id="main">
+
   <div class="mt-5">
     <i class="fa-solid fa-pen-to-square fa-2xl"> 게시판 </i>
     <hr>
@@ -84,20 +85,21 @@
   <div class="row">
     <div class="offset-2 col-8">
       <nav>
+
         <ul class="pagination justify-content-center">
-          <li class="page-item disabled"><a class="page-link" href="#">이전</a></li>
-          <li class="page-item"><a class="page-link" href="/board/list?cpg=1">1</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">2</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">3</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">4</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">5</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">6</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">7</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">8</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">9</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">10</a></li>
-          <li class="page-item"><a class="page-link" href="${pglink}">다음</a></li>
+          <c:if test="${cpg-1 gt 0}"><li class="page-item"></li></c:if>
+          <c:if test="${cpg-1 le 0}"><li class="page-item disabled"></c:if>
+          <a class="page-link" href="${pglink}${cpg - 1}">이전</a></li>
+
+          <c:forEach var="i" begin="1" end="10">
+            <c:if test="${i ne cpg}"><li class="page-item"></c:if>
+            <c:if test="${i eq cpg}"><li class="page-item active"></c:if>
+            <a class="page-link" href="${pglink}${i}">${i}</a></li>
+          </c:forEach>
+
+          <li class="page-item"><a class="page-link" href="${pglink}${cpg + 1}">다음</a></li>
         </ul>
+
       </nav>
     </div>
   </div>
