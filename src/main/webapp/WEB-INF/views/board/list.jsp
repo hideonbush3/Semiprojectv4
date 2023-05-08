@@ -29,8 +29,13 @@
 // endPage = startPage + 10 - 1
 %>
 
+<%-- 검색기능 x 글 리스트 조회 --%>
 <c:set var="pglink" value="/board/list?cpg="/>
-<c:set var="pglink2" value="/board/find?cpg="/>
+
+<%-- 검색기능 o 글 리스트 조회 --%>
+<c:if test="${not empty param.fkey}">
+  <c:set var="pglink" value="/board/find?ftype=${param.ftype}&fkey=${param.fkey}&cpg=" />
+</c:if>
 
 <div id="main">
 
@@ -58,7 +63,7 @@
           <i class="fa-solid fa-magnifying-glass"></i> 검색하기</button></div>
     </div>
     <div class="col-2 text-end">
-      <button type="button" class="btn btn-light">
+      <button type="button" class="btn btn-light" id="newbtn">
         <i class="fa fa-plus-circle"> </i> 새글쓰기</button>
     </div>
   </div>
@@ -103,28 +108,29 @@
 
         <ul class="pagination justify-content-center">
 
-          <c:if test="${cpg gt 1}"><li class="page-item">
-          <a class="page-link" href="${pglink}${1}">처음</a></li></c:if>
+            <c:if test="${cpg gt 1}"><li class="page-item">
+            <a class="page-link" href="${pglink}${1}">처음</a></li></c:if>
 
-          <c:if test="${cpg-1 gt 0}"><li class="page-item"></li></c:if>   
-          <c:if test="${cpg-1 le 0}"><li class="page-item disabled"></c:if>
-            <a class="page-link" href="${pglink}${cpg - 1}">이전</a></li>
+            <c:if test="${cpg-1 gt 0}"><li class="page-item"></li></c:if>
+            <c:if test="${cpg-1 le 0}"><li class="page-item disabled"></c:if>
+              <a class="page-link" href="${pglink}${cpg - 1}">이전</a></li>
 
-          <c:forEach var="i" begin="${stpg}" end="${stpg + 10 - 1}">
-              <c:if test="${i le cntpg}"> <!-- 현재페이지번호 (i) 가 전체 페이지개수 (cntpg) 보다 같거나 작을때만 페이지네이션 번호를 출력 -->
-                <c:if test="${i ne cpg}"><li class="page-item"></c:if>
-                <c:if test="${i eq cpg}"><li class="page-item active"></c:if>
-                  <a class="page-link" href="${pglink}${i}">${i}</a></li>
+            <c:forEach var="i" begin="${stpg}" end="${stpg + 10 - 1}">
+                <c:if test="${i le cntpg}"> <!-- 현재페이지번호 (i) 가 전체 페이지개수 (cntpg) 보다 같거나 작을때만 페이지네이션 번호를 출력 -->
+                  <c:if test="${i ne cpg}"><li class="page-item"></c:if>
+                  <c:if test="${i eq cpg}"><li class="page-item active"></c:if>
+                    <a class="page-link" href="${pglink}${i}">${i}</a></li>
+              </c:if>
+            </c:forEach>
+
+            <c:if test="${(cpg+1) lt cntpg}"><li class="page-item"></c:if>
+            <c:if test="${(cpg+1) ge cntpg}"><li class="page-item disabled"></c:if>
+            <a class="page-link" href="${pglink}${cpg + 1}">다음</a></li>
+
+            <c:if test="${cpg lt cntpg}"><li class="page-item">
+             <a class="page-link" href="${pglink}${cntpg}">끝</a></li>
             </c:if>
-          </c:forEach>
 
-          <c:if test="${(cpg+1) lt cntpg}"><li class="page-item"></c:if>
-          <c:if test="${(cpg+1) ge cntpg}"><li class="page-item disabled"></c:if>
-          <a class="page-link" href="${pglink}${cpg + 1}">다음</a></li>
-
-          <c:if test="${cpg lt cntpg}"><li class="page-item">
-           <a class="page-link" href="${pglink}${cntpg}">끝</a></li>
-          </c:if>
         </ul>
 
       </nav>

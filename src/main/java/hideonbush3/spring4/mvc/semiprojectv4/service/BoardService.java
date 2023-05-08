@@ -13,4 +13,6 @@ public interface BoardService {
     List<Board> readBoard(int cpg, String ftype, String fkey);
 
     int countBoard(String ftype, String fkey);
+
+    boolean newBoard(Board bd);
 }

@@ -43,7 +43,15 @@ public class BoardServiceImpl implements BoardService {
         Map<String, Object> params = new HashMap<>();
         params.put("ftype", ftype);
         params.put("fkey", fkey);
-        
+
         return bddao.countBoard(params);
+    }
+
+    @Override
+    public boolean newBoard(Board bd) {
+        boolean result = false;
+        if(bddao.insertBoard(bd) > 0) result = true;
+
+        return result;
     }
 }

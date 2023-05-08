@@ -32,4 +32,9 @@ public class BoardDAOImpl implements BoardDAO {
     public int countBoard(Map<String, Object> params) {
         return sqlSession.selectOne("board.countFindBoard", params);
     }
+
+    @Override
+    public int insertBoard(Board bd) {
+        return sqlSession.insert("board.insertBoard", bd);
+    }
 }

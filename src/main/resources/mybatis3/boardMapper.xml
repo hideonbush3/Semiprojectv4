@@ -43,4 +43,9 @@
                             where contents like concat('%', #{fkey}, '%')
 </if>
     </select>
+
+    <insert id="insertBoard" parameterType="hideonbush3.spring4.mvc.semiprojectv4.model.Board"
+            statementType="PREPARED">
+        insert into board (title, userid, content) values (#{title}, #{userid}, #{content})
+    </insert>
 </mapper>
