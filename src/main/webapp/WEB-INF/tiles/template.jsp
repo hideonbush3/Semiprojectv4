@@ -8,8 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>semi project v3</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/semiprojectv4.css">
 </head>
 <body>
@@ -25,6 +25,8 @@
 <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}"/>
 <c:if test="${! fn:startsWith(path, '/join')}">
 <!-- 로그인 폼 모달 -->
+    <!-- backdrop을 static으로 설정하면 모달창 바깥을 클릭했을때 모달이 닫히지 않는다
+    keyboard를 true로 설정하면 esc키를 눌렀을때 모달창이 닫힌다 -->
 <div class="modal fade" id="loginfrm" role="dialog"
      data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">

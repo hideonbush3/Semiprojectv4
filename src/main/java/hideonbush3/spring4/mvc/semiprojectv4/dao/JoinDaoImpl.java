@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("jndao")
-public class joinDaoImpl implements JoinDao{
+public class JoinDaoImpl implements JoinDao{
 
     @Autowired
     SqlSession sqlSession;

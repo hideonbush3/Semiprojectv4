@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class memberController {
+public class MemberController {
 
     @Autowired private MemberService msrv;
 

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping("/join")
-public class joinController {
+public class JoinController {
     @Autowired private JoinService jnsrv;
 
     @GetMapping("/agree")

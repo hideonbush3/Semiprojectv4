@@ -1,3 +1,4 @@
+// ------------------------------------ agree
 // 이용약관 체크박스
 let agree1 = document.querySelector('#agree1');
 
@@ -59,7 +60,9 @@ const zipmodal = document.querySelector('#zipmodal');
 const zpmdbtn = document.querySelector('#zpmdbtn');
 
 let modal = null;
-try{modal = new bootstrap.Modal(zipmodal, {});}catch (e){};
+try{
+    modal = new bootstrap.Modal(zipmodal, {});
+}catch (e){}
 
 
 
@@ -90,7 +93,7 @@ zpmdbtn?.addEventListener('click', () => {
     }
     dong.value = '';
     modal.show();
-})
+});
 
 cancelbtn?.addEventListener('click', () => {
     location.href = "/join/checkme";
