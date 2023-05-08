@@ -1,5 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:if test="${empty sessionScope.UID}">
+    <script>location.href = "/";</script>
+</c:if>
 <div id="main">
     <div class="mt-5">
         <i class="fa-solid fa-pen-to-square fa-2xl"> 게시판 </i>
