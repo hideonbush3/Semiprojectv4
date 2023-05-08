@@ -21,15 +21,26 @@
         select bno, title, userid, thumbs, views, regdate from board
 
         <if test="ftype != 'titcont'">
-        where ${ftype} like concat(#{fkey}, '%')
+        where ${ftype} like concat('%', #{fkey}, '%')
 
         </if>
         <if test="ftype == 'titcont'">
-        where title like concat(#{fkey}, '%') or
-              contents like concat(#{fkey}, '%')
+        where title like concat('%', #{fkey}, '%') or
+              contents like concat('%', #{fkey}, '%')
         </if>
 
         order by bno desc limit #{stbno}, 25
     </select>
 
+    <select id="countFindBoard" statementType="PREPARED" parameterType="map"
+            resultType="int">
+        select ceil(count(bno)) cnt from board
+<if test="ftype != 'titcont'">
+    where ${ftype} like concat('%', #{fkey}, '%')
+</if>
+<if test="ftype == 'titcont'">
+    where title like concat('%', #{fkey}, '%') or
+                            where contents like concat('%', #{fkey}, '%')
+</if>
+    </select>
 </mapper>
