@@ -14,4 +14,22 @@
         select ceil(count (bno) / 25) cnt from board
     </select>
 
+    <!-- 동적 질의문으로 검색기능 구현 -->
+    <!-- 단, 컬럼명이나 테이블명에는 ${} 이 아닌 ${}를 사용! -->
+    <select id="selectFindBoard" statementType="PREPARED" parameterType="map"
+            resultType="hideonbush3.spring4.mvc.semiprojectv4.model.Board">
+        select bno, title, userid, thumbs, views, regdate from board
+
+        <if test="ftype != 'titcont'">
+        where ${ftype} like concat(#{fkey}, '%')
+
+        </if>
+        <if test="ftype == 'titcont'">
+        where title like concat(#{fkey}, '%') or
+              contents like concat(#{fkey}, '%')
+        </if>
+
+        order by bno desc limit #{stbno}, 25
+    </select>
+
 </mapper>

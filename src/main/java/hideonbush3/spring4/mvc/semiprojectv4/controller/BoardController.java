@@ -19,11 +19,23 @@ public class BoardController {
         ModelAndView mv = new ModelAndView();
 
         mv.setViewName("board/list.tiles");
-        mv.addObject("bdlist", bdsrv.readBoard(cpg));
-        mv.addObject("cpg", cpg);
+        mv.addObject("bdlist", bdsrv.readBoard(cpg));   // 현재페이지에 출력할 게시글리스트
+        mv.addObject("cpg", cpg);   // 현재페이지 번호
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
-        mv.addObject("cntpg", bdsrv.countBoard());
+        mv.addObject("cntpg", bdsrv.countBoard());  // 총페이지수
 
+        return mv;
+    }
+
+    @GetMapping("/find")    // 검색처리
+    public ModelAndView find(int cpg, String ftype, String fkey){
+        ModelAndView mv = new ModelAndView();
+
+        mv.setViewName("board/list.tiles");
+        mv.addObject("bdlist", bdsrv.readBoard(cpg, ftype, fkey));
+        mv.addObject("cpg", cpg);   // 현재페이지 번호
+        mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
+        mv.addObject("cntpg", bdsrv.countBoard(ftype, fkey));  // 총페이지수
         return mv;
     }
 }
