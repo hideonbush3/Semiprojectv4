@@ -50,4 +50,9 @@ public class BoardDAOTest {
 
         assertEquals(1, (int)sqlSession.insert("board.insertBoard", b));
     }
+
+    @Test
+    public void selectOneBoard() {
+        assertNotNull(sqlSession.selectOne("board.selectOneBoard", "123"));
+    }
 }

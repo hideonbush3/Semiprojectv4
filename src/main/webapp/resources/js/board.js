@@ -31,3 +31,13 @@ writebtn?.addEventListener('click', () => {
     }
 })
 
+const prevbtn = document.querySelector("#prevbtn");
+const nextbtn = document.querySelector("#nextbtn");
+const listbtn = document.querySelector("#listbtn");
+prevbtn?.addEventListener('click', () => {});
+
+nextbtn?.addEventListener('click', () => {});
+
+listbtn?.addEventListener('click', () => {
+    location.href = '/board/list?cpg=1'; });
+
